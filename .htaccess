@@ -1,4 +1,4 @@
-# Up&In Family Office de l'Autonomie — hébergement OVH
+# Up&In Family Office de l'Autonomie — hébergement OVH (déploiement automatique depuis GitHub)
 Options -Indexes
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
