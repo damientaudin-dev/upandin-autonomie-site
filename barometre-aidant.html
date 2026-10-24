@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Le Baromètre de l'Aidant — Up&amp;In Family Office de l'Autonomie</title>
+<meta name="description" content="Outil gratuit pour les aidants : estimez en 5 minutes le temps consacré à votre proche âgé, votre charge mentale et ce que vous pourriez déléguer. Up&In Family Office de l'Autonomie, Bordeaux.">
+<meta name="theme-color" content="#10214C">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Le Baromètre de l'Aidant">
+<meta property="og:description" content="Combien de temps consacrez-vous à votre proche ? Faites le point en 5 minutes.">
+<meta property="og:image" content="/img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout : bandeau marine (thèse + jauge en direct), puis questionnaire à gauche et résultat collant à droite ; une colonne sur mobile. Texte agrandi pour seniors et aidants. */
+:root{
+  --navy:#10214C; --navy-2:#1A2F66; --gold:#C9A24E; --gold-soft:#F3E8CF;
+  --bg:#F7F2E7; --card:#FFFDF8; --fg:#1b2333; --muted:#5b6474; --line:#dcdfe5;
+  --ok:#2f7d5b; --warn:#b7791f; --high:#c0562f; --alert:#a8323a;
+  --display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+  --on-navy:#f4f1e8;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --navy:#0e1c36; --navy-2:#17294a; --gold:#d4b064; --gold-soft:#3a3222;
+  --bg:#10151f; --card:#18202d; --fg:#e8eaee; --muted:#a3abb8; --line:#2c3646;
+  --ok:#5fb88e; --warn:#e0a84a; --high:#e88a62; --alert:#e2707a; --on-navy:#f4f1e8; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --navy:#0e1c36; --navy-2:#17294a; --gold:#d4b064; --gold-soft:#3a3222;
+  --bg:#10151f; --card:#18202d; --fg:#e8eaee; --muted:#a3abb8; --line:#2c3646;
+  --ok:#5fb88e; --warn:#e0a84a; --high:#e88a62; --alert:#e2707a; --on-navy:#f4f1e8; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:18px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+
+/* bandeau */
+.hero{background:var(--navy);color:var(--on-navy)}
+.hero .wrap{padding-block:40px 44px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
+.brand{margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand .back{color:var(--gold);font-weight:600;font-size:.9rem;text-decoration:none}
+.brand .back:hover{text-decoration:underline}
+.brand img{display:block;width:min(260px,70vw);height:auto}
+.brand svg{flex:none}
+.brand b{font-family:var(--display);font-size:1.15rem;letter-spacing:.01em}
+.brand span{display:block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2rem,4.4vw,3.1rem);line-height:1.12;margin:10px 0 16px}
+.hero p{max-width:34em;color:#d6dae3;margin:0}
+.hero-gauge{background:var(--navy-2);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:22px 22px 18px;text-align:center}
+.hero-gauge .lbl{font-size:.85rem;color:#c3c9d5}
+.hero-gauge .hours{font-family:var(--display);font-size:3.2rem;line-height:1;margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.hero-gauge .sub{font-size:.95rem;color:#c3c9d5}
+.hero-gauge .note{margin-top:12px;font-size:.78rem;color:#9ea7b8}
+
+/* main */
+main .wrap{padding-block:36px 56px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:32px;align-items:start}
+.sample{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--gold-soft);border-radius:10px;padding:12px 16px;font-size:.95rem;margin-bottom:22px}
+.sample button{margin-left:auto}
+section.block{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 24px;display:grid;gap:22px}
+section.block + section.block{margin-top:22px}
+.block header{display:grid;gap:4px}
+.block h2{font-size:1.5rem}
+.block header p{margin:0;color:var(--muted);font-size:.98rem}
+
+.q{display:grid;gap:8px}
+.q label,.q .qt{font-weight:600}
+.q .hint{font-size:.9rem;color:var(--muted);margin-top:-4px}
+.row{display:flex;align-items:center;gap:14px}
+input[type=range]{flex:1;min-width:0;accent-color:var(--gold);height:32px}
+.val{min-width:6.6em;text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--navy-2)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .val{color:var(--gold)}}
+:root[data-theme="dark"] .val{color:var(--gold)}
+
+.likert{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.likert input{position:absolute;opacity:0;pointer-events:none}
+.likert label{display:block;text-align:center;font-weight:600;font-size:.88rem;padding:10px 4px;border:1.5px solid var(--line);border-radius:9px;cursor:pointer;background:var(--bg);color:var(--fg);transition:background .15s,border-color .15s}
+.likert input:checked + label{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.likert input:focus-visible + label{outline:3px solid var(--gold);outline-offset:2px}
+
+.money{display:flex;align-items:center;gap:10px}
+.money input{width:6em;font:inherit;font-weight:700;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+
+button{font:inherit;font-weight:700;border-radius:9px;padding:10px 16px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) button{border-color:var(--gold);color:var(--gold)}}
+:root[data-theme="dark"] button{border-color:var(--gold);color:var(--gold)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* résultat */
+aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);display:grid;gap:18px}
+.res{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;gap:18px}
+.score{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.dial{width:118px;height:118px}
+.score .lvl{display:inline-block;font-size:.85rem;font-weight:700;padding:3px 10px;border-radius:999px;color:#fff}
+.score h3{font-size:1.25rem;margin:8px 0 4px}
+.score p{margin:0;font-size:.95rem;color:var(--muted)}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fig{border-top:2px solid var(--gold);padding-top:8px}
+.fig b{display:block;font-family:var(--display);font-size:1.6rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.fig span{font-size:.86rem;color:var(--muted)}
+.bars{display:grid;gap:7px}
+.bar{display:grid;grid-template-columns:8.5em 1fr 3.6em;gap:10px;align-items:center;font-size:.88rem}
+.bar .t{height:10px;background:var(--bg);border-radius:6px;overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--navy-2);border-radius:6px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar .t i{background:var(--gold)}}
+:root[data-theme="dark"] .bar .t i{background:var(--gold)}
+.bar em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+
+.reco{background:var(--navy);color:var(--on-navy);border-radius:14px;padding:24px;display:grid;gap:12px}
+.reco h3{font-size:1.35rem;color:#fff}
+.reco h3 span{color:var(--gold)}
+.reco p{margin:0;color:#d6dae3;font-size:.98rem}
+.contact{display:grid;gap:8px;border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+.contact div{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.contact strong{font-size:1.15rem;user-select:all;font-variant-numeric:tabular-nums}
+.contact button{border-color:var(--gold);color:var(--gold);padding:5px 10px;font-size:.85rem}
+.disc{font-size:.82rem;color:var(--muted);margin:0}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:22px;font-size:.85rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+
+@media (max-width:880px){
+  .hero .wrap,main .wrap{grid-template-columns:1fr}
+  aside{position:static}
+}
+@media (max-width:480px){
+  body{font-size:17px}
+  .likert{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .likert label{font-size:.76rem;padding:9px 2px}
+  .bar{grid-template-columns:6.8em 1fr 3.2em}
+  .score{grid-template-columns:1fr;justify-items:start}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="brand"><a href="/" class="home"><img src="/img/logo-family-office-horizontal.png" alt="Up&amp;In Family Office de l'Autonomie" width="355" height="180"></a><a href="/" class="back">← Retour au site</a></div>
+      <div class="eyebrow">Outil gratuit · 5 minutes · sans inscription</div>
+      <h1>Le Baromètre de l'Aidant</h1>
+      <p>Vous veillez sur un parent âgé ? Mesurez le temps que cela vous prend chaque mois et le poids que vous portez. Le résultat se met à jour à chaque réponse.</p>
+    </div>
+    <div class="hero-gauge" aria-live="polite">
+      <div class="lbl">Temps consacré estimé</div>
+      <div class="hours" id="heroHours">–</div>
+      <div class="sub">heures par mois</div>
+      <div class="note" id="heroNote">soit – journées de travail</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div>
+      <div class="sample" id="sampleBar">
+        <span>Les réponses affichées sont un <strong>exemple</strong> (aidante salariée, mère de 84 ans à domicile). Remplacez-les par votre situation.</span>
+        <button type="button" id="resetBtn">Tout remettre à zéro</button>
+      </div>
+
+      <section class="block" aria-labelledby="t1">
+        <header>
+          <span class="eyebrow">1 · Le temps</span>
+          <h2 id="t1">Ce que vous faites pour votre proche</h2>
+          <p>Estimez au plus juste. Comptez aussi les appels passés depuis le travail.</p>
+        </header>
+        <div class="q"><label for="coord">Coordonner les intervenants</label><div class="hint">Infirmier, aide à domicile, kiné, portage de repas : appels, plannings, remplacements</div>
+          <div class="row"><input type="range" id="coord" min="0" max="15" step="0.5" value="3"><output class="val" for="coord"></output></div></div>
+        <div class="q"><label for="admin">Démarches administratives</label><div class="hint">APA, MDPH, caisse de retraite, mutuelle, impôts, courriers, factures</div>
+          <div class="row"><input type="range" id="admin" min="0" max="30" step="1" value="6"><output class="val" for="admin"></output></div></div>
+        <div class="q"><label for="rdv">Rendez-vous médicaux accompagnés</label><div class="hint">Nombre par mois, prise de rendez-vous et attente comprises (environ 3 h chacun)</div>
+          <div class="row"><input type="range" id="rdv" min="0" max="10" step="1" value="2"><output class="val" for="rdv"></output></div></div>
+        <div class="q"><label for="traj">Trajets jusqu'à son domicile</label><div class="hint">Temps aller-retour par semaine</div>
+          <div class="row"><input type="range" id="traj" min="0" max="15" step="0.5" value="2"><output class="val" for="traj"></output></div></div>
+        <div class="q"><label for="urg">Imprévus et urgences</label><div class="hint">Chute, panne, hospitalisation, appel inquiet : nombre par mois (environ 4 h chacun)</div>
+          <div class="row"><input type="range" id="urg" min="0" max="8" step="1" value="1"><output class="val" for="urg"></output></div></div>
+      </section>
+
+      <section class="block" aria-labelledby="t2">
+        <header>
+          <span class="eyebrow">2 · La charge mentale</span>
+          <h2 id="t2">Ce que vous portez dans la tête</h2>
+          <p>Le temps ne dit pas tout. À quelle fréquence vivez-vous ces situations ?</p>
+        </header>
+        <div id="likerts"></div>
+      </section>
+
+      <section class="block" aria-labelledby="t3">
+        <header>
+          <span class="eyebrow">3 · La valeur de votre temps</span>
+          <h2 id="t3">Combien vaut une heure pour vous ?</h2>
+          <p>Votre salaire horaire net, ou ce que vous estimez perdre en repos, en travail ou en vie de famille.</p>
+        </header>
+        <div class="q"><label for="rate">Valeur d'une heure</label>
+          <div class="money"><input type="number" id="rate" min="0" max="500" step="1" value="25" inputmode="numeric"><span>€ / heure</span></div></div>
+      </section>
+    </div>
+
+    <aside aria-live="polite">
+      <div class="res">
+        <span class="eyebrow">Votre baromètre</span>
+        <div class="score">
+          <svg class="dial" viewBox="0 0 120 120" role="img" aria-label="Score de charge">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--line)" stroke-width="11"/>
+            <circle id="arc" cx="60" cy="60" r="50" fill="none" stroke="var(--gold)" stroke-width="11" stroke-linecap="round" transform="rotate(-90 60 60)" stroke-dasharray="314.16" stroke-dashoffset="314.16"/>
+            <text id="scoreTxt" x="60" y="64" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="30" font-weight="700" fill="var(--fg)">–</text>
+            <text x="60" y="84" text-anchor="middle" font-size="11" fill="var(--muted)">sur 100</text>
+          </svg>
+          <div>
+            <span class="lvl" id="lvl">–</span>
+            <h3 id="lvlTitle">–</h3>
+            <p id="lvlText">–</p>
+          </div>
+        </div>
+        <div class="figs">
+          <div class="fig"><b id="fHours">–</b><span>heures par mois</span></div>
+          <div class="fig"><b id="fDays">–</b><span>jours de congé par an</span></div>
+          <div class="fig"><b id="fCost">–</b><span>de temps donné par an</span></div>
+          <div class="fig"><b id="fDeleg">–</b><span>délégables par mois</span></div>
+        </div>
+        <div class="bars" id="bars"></div>
+      </div>
+
+      <div class="reco">
+        <span class="eyebrow">Ce que nous pouvons reprendre</span>
+        <h3 id="recoTitle">Forfait <span>–</span></h3>
+        <p id="recoText">–</p>
+        <div class="contact">
+          <p>Parlons-en, sans engagement :</p>
+          <div><strong id="tel">07 64 05 89 45</strong><button type="button" data-copy="tel">Copier</button></div>
+          <div><strong id="mail">contact@upandin-autonomie.fr</strong><button type="button" data-copy="mail">Copier</button></div>
+        </div>
+      </div>
+      <p class="disc">Outil indicatif et non médical. Vos réponses restent dans votre navigateur et ne sont envoyées à personne. Si vous vous sentez épuisé, parlez-en à votre médecin traitant.</p>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><a href="/" style="color:inherit">Up&amp;In Family Office de l'Autonomie</a> · Le Bouscat · Bordeaux Métropole et Gironde · <a href="/mentions-legales" style="color:inherit">Mentions légales</a></span>
+    <span>Natacha Taudin, Présidente · Damien Taudin, Directeur général</span>
+  </div>
+</footer>
+
+<script>
+const ITEMS=[
+ ["nuit","Vous pensez à votre proche la nuit ou au réveil"],
+ ["travail","Vous êtes interrompu au travail pour lui"],
+ ["oubli","Vous avez peur d'oublier un rendez-vous, un papier, un traitement"],
+ ["seul","Vous vous sentez seul à tout organiser"],
+ ["culpa","Vous culpabilisez de ne pas en faire assez"],
+ ["famille","Le sujet crée des tensions dans la famille"],
+ ["renonce","Vous renoncez à des loisirs, des sorties, des vacances"],
+ ["fatigue","Vous vous sentez fatigué ou à bout"]
+];
+const SCALE=["Jamais","Rarement","Parfois","Souvent","Toujours"];
+const SAMPLE={nuit:3,travail:2,oubli:3,seul:3,culpa:2,famille:1,renonce:2,fatigue:2};
+const $=id=>document.getElementById(id);
+
+const box=$("likerts");
+ITEMS.forEach(([k,txt])=>{
+  const d=document.createElement("div");d.className="q";d.setAttribute("role","radiogroup");d.setAttribute("aria-label",txt);
+  d.innerHTML=`<span class="qt">${txt}</span><div class="likert">`+SCALE.map((s,i)=>`<input type="radio" name="${k}" id="${k}${i}" value="${i}" ${SAMPLE[k]===i?"checked":""}><label for="${k}${i}">${s}</label>`).join("")+`</div>`;
+  box.appendChild(d);
+});
+
+const W=4.33; // semaines par mois
+const fmtH=v=>(Math.round(v*10)/10).toLocaleString("fr-FR");
+const unit={coord:"h / sem.",admin:"h / mois",rdv:"/ mois",traj:"h / sem.",urg:"/ mois"};
+function compute(){
+  const g=id=>parseFloat($(id).value)||0;
+  ["coord","admin","rdv","traj","urg"].forEach(id=>{
+    const o=document.querySelector(`output[for=${id}]`);o.textContent=fmtH(g(id))+" "+unit[id];
+  });
+  const parts=[
+    ["Coordination",g("coord")*W,.8],
+    ["Administratif",g("admin"),.9],
+    ["Rendez-vous",g("rdv")*3,.6],
+    ["Trajets",g("traj")*W,.5],
+    ["Imprévus",g("urg")*4,.5]
+  ];
+  const H=parts.reduce((s,p)=>s+p[1],0);
+  const D=parts.reduce((s,p)=>s+p[1]*p[2],0);
+  let m=0;ITEMS.forEach(([k])=>{const c=document.querySelector(`input[name=${k}]:checked`);m+=c?+c.value:0});
+  const score=Math.round(Math.min(H/45,1)*50+m/32*50);
+  const rate=Math.max(0,g("rate"));
+
+  $("heroHours").textContent=fmtH(H);
+  $("heroNote").textContent=`soit ${fmtH(H/7)} journées de travail chaque mois`;
+  $("fHours").textContent=fmtH(H)+" h";
+  $("fDays").textContent=Math.round(H*12/7)+" j";
+  $("fCost").textContent=Math.round(H*12*rate).toLocaleString("fr-FR")+" €";
+  $("fDeleg").textContent=fmtH(D)+" h";
+
+  const max=Math.max(...parts.map(p=>p[1]),1);
+  $("bars").innerHTML=parts.map(p=>`<div class="bar"><span>${p[0]}</span><span class="t"><i style="width:${p[1]/max*100}%"></i></span><em>${fmtH(p[1])} h</em></div>`).join("");
+
+  const lv=score<30?["Gérable","var(--ok)","Votre situation reste tenable.","Gardez un œil sur l'évolution : la charge augmente souvent par paliers, après une chute ou une hospitalisation."]
+    :score<55?["Soutenue","var(--warn)","Vous tenez, mais cela pèse.","Déléguer la coordination et les papiers vous rendrait du temps et de l'esprit avant que la fatigue ne s'installe."]
+    :score<75?["Lourde","var(--high)","Vous portez beaucoup, souvent seul.","À ce niveau, l'épuisement de l'aidant n'est pas rare. Un référent unique peut reprendre l'organisation."]
+    :["Alerte","var(--alert)","Votre charge dépasse ce qu'une personne peut porter durablement.","Parlez-en à votre médecin traitant, et faites-vous relayer rapidement pour la coordination."];
+  $("lvl").textContent=lv[0];$("lvl").style.background=lv[1];
+  $("lvlTitle").textContent=lv[2];$("lvlText").textContent=lv[3];
+  $("scoreTxt").textContent=score;
+  $("arc").style.stroke=lv[1];
+  $("arc").setAttribute("stroke-dashoffset",(314.16*(1-score/100)).toFixed(1));
+
+  let f,h,t;
+  if(D<=4){f="Repères";h="3 h";t="un point régulier et un regard extérieur pour anticiper"}
+  else if(D<=10){f="Relais";h="8 h";t="la coordination des intervenants et le suivi des démarches"}
+  else{f="Sérénité";h="14 h";t="l'organisation complète du quotidien, avec un référent unique"}
+  $("recoTitle").innerHTML=`Forfait <span>${f}</span>`;
+  const extra=D>18?` Au-delà, des heures complémentaires peuvent être ajoutées.`:"";
+  $("recoText").textContent=`Environ ${fmtH(D)} h de vos tâches mensuelles peuvent être confiées à un tiers. Le forfait ${f} (${h} par mois) couvre ${t}.${extra} Nous ajoutons ce que d'autres ne font pas : une écoute de la charge émotionnelle de toute la famille.`;
+}
+
+document.addEventListener("input",e=>{if(e.target.matches("input"))compute()});
+$("resetBtn").addEventListener("click",()=>{
+  ["coord","admin","rdv","traj","urg"].forEach(id=>$(id).value=0);
+  ITEMS.forEach(([k])=>{$(k+"0").checked=true});
+  $("sampleBar").hidden=true;compute();
+});
+document.querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",()=>{
+  const el=$(b.dataset.copy),txt=el.textContent;
+  const done=()=>{b.textContent="Copié";setTimeout(()=>b.textContent="Copier",1600)};
+  const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)};
+  try{navigator.clipboard.writeText(txt).then(done,sel)}catch(e){sel()}
+}));
+compute();
+</script>
+
+</body>
+</html>
