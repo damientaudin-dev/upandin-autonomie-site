@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sondage — Up&amp;In Family Office de l'Autonomie</title>
+<meta name="description" content="Aidez-nous à construire l'accompagnement dont les seniors et leurs proches ont besoin. 9 questions, 2 minutes. Up&In Family Office de l'Autonomie, Bordeaux Métropole.">
+<meta name="theme-color" content="#10214C">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Votre avis compte — Sondage Up&In Family Office de l'Autonomie">
+<meta property="og:description" content="9 questions, 2 minutes, pour bâtir un accompagnement qui répond aux vrais besoins des seniors et de leurs proches.">
+<meta property="og:image" content="/img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout : bandeau marine (logo + promesse), puis une carte centrée avec une question par écran, barre de progression. Gros caractères pour seniors et aidants. */
+:root{
+  --navy:#10214C; --navy-2:#1A2F66; --gold:#C9A24E; --gold-soft:#F3E8CF;
+  --bg:#F7F2E7; --card:#FFFDF8; --fg:#1b2333; --muted:#5b6474; --line:#dcdfe5; --sel:#eef1f8;
+  --display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+  --on-navy:#f4f1e8;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --navy:#0e1c36; --navy-2:#17294a; --gold:#d4b064; --gold-soft:#3a3222;
+  --bg:#10151f; --card:#18202d; --fg:#e8eaee; --muted:#a3abb8; --line:#2c3646; --sel:#1f2b40; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --navy:#0e1c36; --navy-2:#17294a; --gold:#d4b064; --gold-soft:#3a3222;
+  --bg:#10151f; --card:#18202d; --fg:#e8eaee; --muted:#a3abb8; --line:#2c3646; --sel:#1f2b40; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:19px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;line-height:1.15}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+
+.hero{background:var(--navy);color:var(--on-navy)}
+.hero .wrap{padding-block:32px 40px}
+.brand{margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand img{display:block;width:min(260px,70vw);height:auto}
+.brand .back{color:var(--gold);font-weight:600;font-size:.9rem;text-decoration:none}
+.brand .back:hover{text-decoration:underline}
+.hero h1{font-size:clamp(2rem,4.4vw,3rem);margin:10px 0 14px;max-width:18em}
+.hero p{max-width:36em;color:#d6dae3;margin:0}
+.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.facts span{border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px 14px;font-size:.9rem;color:#e4e7ee}
+
+main .wrap{padding-block:36px 56px;max-width:760px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 26px;display:grid;gap:20px}
+.prog{height:8px;background:var(--line);border-radius:6px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+.count{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.card h2{font-size:clamp(1.6rem,3.4vw,2rem)}
+.hint{color:var(--muted);margin:0;font-size:1rem}
+.quote{font-family:var(--display);font-size:1.4rem;border-left:4px solid var(--gold);padding-left:14px;margin:0}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;font:inherit;text-align:left;color:var(--fg);width:100%}
+.opt:hover{border-color:var(--muted)}
+.opt[aria-pressed="true"]{border-color:var(--navy);background:var(--sel)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .opt[aria-pressed="true"]{border-color:var(--gold)}}
+:root[data-theme="dark"] .opt[aria-pressed="true"]{border-color:var(--gold)}
+.box{flex:none;width:26px;height:26px;border:2px solid var(--muted);border-radius:6px;display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.opt.radio .box{border-radius:50%}
+.opt[aria-pressed="true"] .box{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+textarea,input[type=text]{width:100%;font:inherit;padding:14px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg)}
+textarea{min-height:130px;resize:vertical}
+.nav{display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
+.btn{font:inherit;font-weight:700;border-radius:999px;padding:13px 28px;cursor:pointer;border:2px solid transparent;text-decoration:none;display:inline-block}
+.primary{background:var(--gold);color:#14254a}
+.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.rgpd{font-size:.85rem;color:var(--muted);margin:0}
+.msg{background:var(--gold-soft);border-radius:10px;padding:12px 16px;font-size:.95rem;margin:0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:22px;font-size:.85rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+@media (max-width:480px){body{font-size:18px}.card{padding:22px 18px}.btn{padding:12px 22px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="brand"><a href="/"><img src="/img/logo-family-office-horizontal.png" alt="Up&amp;In Family Office de l'Autonomie" width="355" height="180"></a><a href="/" class="back">← Retour au site</a></div>
+    <div class="eyebrow">Sondage · Votre avis compte</div>
+    <h1>Aidez-nous à construire l'accompagnement dont vous avez besoin</h1>
+    <p>Personne âgée, proche aidant ou professionnel : vos réponses nous aident à bâtir à Bordeaux un service simple, humain et adapté à chaque famille.</p>
+    <div class="facts"><span>9 questions</span><span>2 minutes</span><span>Anonyme si vous le souhaitez</span></div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="card" aria-live="polite">
+      <div class="prog" aria-hidden="true"><i id="bar"></i></div>
+      <div id="app"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><a href="/" style="color:inherit">Up&amp;In Family Office de l'Autonomie</a> · Le Bouscat · Bordeaux Métropole et Gironde · <a href="/mentions-legales" style="color:inherit">Mentions légales</a></span>
+    <span>Natacha Taudin, Présidente · Damien Taudin, Directeur général</span>
+  </div>
+</footer>
+
+<script>
+const Q=[
+ {id:"profil",type:"radio",t:"Vous répondez en tant que…",o:["Personne de plus de 65 ans","Proche d'une personne âgée (enfant, conjoint…)","Professionnel (santé, résidence, commerce)"]},
+ {id:"soucis",type:"multi",max:3,t:"Qu'est-ce qui vous préoccupe le plus aujourd'hui ?",h:"Jusqu'à 3 réponses.",o:["Les démarches administratives","Les rendez-vous médicaux et leur suivi","La solitude, le manque de visites","L'entretien de la maison","Les courses et les repas","La sécurité à domicile","Les déplacements","Le retour à la maison après l'hôpital","La fatigue de l'aidant"]},
+ {id:"services",type:"multi",max:4,t:"Quels services vous seraient utiles ?",h:"Jusqu'à 4 réponses.",o:["Un référent unique à appeler","Des visites régulières à domicile","Un bilan complet des besoins","La prise et le suivi des rendez-vous","Un compte rendu envoyé à la famille","La coordination des intervenants (infirmier, aide, pharmacie…)","Un accompagnement aux sorties et rendez-vous"]},
+ {id:"frequence",type:"radio",t:"À quelle fréquence auriez-vous besoin de nous ?",o:["De temps en temps","2 à 3 fois par mois","Chaque semaine","Plusieurs fois par semaine"]},
+ {id:"contact",type:"multi",max:5,t:"Comment préférez-vous être tenu informé ?",h:"Plusieurs réponses possibles.",o:["Par téléphone","Par SMS","Par e-mail","Par une application","De vive voix, lors des visites"]},
+ {id:"budget",type:"radio",t:"Quel budget mensuel vous semble raisonnable pour être accompagné ?",h:"Cela nous aide à concevoir des formules adaptées.",o:["Moins de 150 €","150 à 300 €","300 à 600 €","600 à 900 €","Plus de 900 €","Je ne sais pas"]},
+ {id:"commune",type:"radio",t:"Dans quelle commune se trouve le logement ?",o:["Le Bouscat","Bordeaux / Caudéran","Bruges","Eysines","Mérignac","Autre commune de la Métropole","Hors Métropole (Gironde)"]},
+ {id:"libre",type:"text",t:"Une chose qui vous simplifierait vraiment la vie ?",h:"Facultatif. Quelques mots suffisent."},
+ {id:"rappel",type:"contact",t:"Souhaitez-vous qu'on vous recontacte ?",h:"Facultatif. Sans engagement."}
+];
+const A={}; let i=-1;
+const app=document.getElementById("app"), bar=document.getElementById("bar");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const goTop=()=>document.querySelector("main").scrollIntoView({block:"start"});
+
+function intro(){
+  bar.style.width="0";
+  app.innerHTML=`<div style="display:grid;gap:18px">
+   <p class="quote">Un référent. Une vision globale. Une coordination dans la durée.</p>
+   <p class="hint">Une question par écran, réponses à cocher. Vous pouvez revenir en arrière à tout moment.</p>
+   <div class="nav"><span></span><button class="btn primary" id="go">Commencer le sondage</button></div></div>`;
+  document.getElementById("go").onclick=()=>{show(0);goTop();};
+}
+function valid(q){const v=A[q.id];
+  if(q.type==="text"||q.type==="contact")return true;
+  return q.type==="multi"?!!(v&&v.length):!!v;}
+function show(n){
+  i=n; const q=Q[i]; bar.style.width=(i/Q.length*100)+"%";
+  let body="";
+  if(q.type==="radio"||q.type==="multi"){
+    const sel=A[q.id]||(q.type==="multi"?[]:null);
+    body=`<div class="opts" role="group" aria-label="${esc(q.t)}">${q.o.map((o,k)=>{
+      const on=q.type==="multi"?sel.includes(o):sel===o;
+      return `<button type="button" class="opt ${q.type==="radio"?"radio":""}" data-k="${k}" aria-pressed="${on}"><span class="box">${on?"✓":""}</span>${esc(o)}</button>`}).join("")}</div>`;
+  } else if(q.type==="text"){
+    body=`<textarea id="f-libre" maxlength="1500" aria-label="${esc(q.t)}">${esc(A.libre||"")}</textarea>`;
+  } else {
+    const c=A.rappel||{};
+    body=`<div class="opts">
+      <input type="text" id="f-nom" maxlength="120" placeholder="Prénom et nom" value="${esc(c.nom||"")}" aria-label="Prénom et nom" autocomplete="name">
+      <input type="text" id="f-tel" maxlength="160" placeholder="Téléphone ou e-mail" value="${esc(c.tel||"")}" aria-label="Téléphone ou e-mail">
+      <input type="text" id="f-site" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="rgpd">Vos coordonnées servent uniquement à vous recontacter au sujet de ce service. Elles ne sont jamais transmises à des tiers. Vous pouvez demander leur suppression à tout moment : <a href="mailto:contact@upandin-autonomie.fr">contact@upandin-autonomie.fr</a>. <a href="/mentions-legales#confidentialite">Politique de confidentialité</a>.</p></div>`;
+  }
+  app.innerHTML=`<div style="display:grid;gap:18px">
+    <div class="count">Question ${i+1} sur ${Q.length}</div>
+    <h2>${esc(q.t)}</h2>${q.h?`<p class="hint">${esc(q.h)}</p>`:""}
+    ${body}
+    <div id="err"></div>
+    <div class="nav"><button class="btn ghost" id="back">Retour</button>
+    <button class="btn primary" id="next" ${valid(q)?"":"disabled"}>${i===Q.length-1?"Envoyer mes réponses":"Suivant"}</button></div></div>`;
+  app.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    const o=q.o[+b.dataset.k];
+    if(q.type==="radio"){A[q.id]=o; show(i); setTimeout(()=>{if(i<Q.length-1){show(i+1);}},250); return;}
+    let s=A[q.id]||[]; s=s.includes(o)?s.filter(x=>x!==o):(s.length<q.max?[...s,o]:s); A[q.id]=s; show(i);
+  });
+  const save=()=>{ if(q.type==="text")A.libre=document.getElementById("f-libre").value.trim();
+    if(q.type==="contact")A.rappel={nom:document.getElementById("f-nom").value.trim(),tel:document.getElementById("f-tel").value.trim()}; };
+  document.getElementById("back").onclick=()=>{save(); i===0?intro():show(i-1)};
+  document.getElementById("next").onclick=()=>{save(); i<Q.length-1?(show(i+1),goTop()):send()};
+}
+function asText(){
+  const L=[];
+  Q.forEach(q=>{
+    if(q.id==="rappel"){const c=A.rappel||{}; L.push(q.t+"\n  "+((c.nom||c.tel)?[c.nom,c.tel].filter(Boolean).join(" · "):"Non"));}
+    else {const v=A[q.id]; L.push(q.t+"\n  "+(Array.isArray(v)?v.join(" ; "):(v||"—")));}
+  });
+  return L.join("\n\n");
+}
+async function send(){
+  const btn=document.getElementById("next"); btn.disabled=true; btn.textContent="Envoi…";
+  const hp=(document.getElementById("f-site")||{}).value||"";
+  try{
+    const r=await fetch("/sondage-envoi.php",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({reponses:A,site:hp})});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok||!j.ok) throw new Error("envoi");
+    done(true);
+  }catch(e){ done(false); }
+}
+function done(ok){
+  bar.style.width="100%";
+  const mail="mailto:contact@upandin-autonomie.fr?subject="+encodeURIComponent("Sondage Family Office de l'Autonomie")+"&body="+encodeURIComponent(asText());
+  app.innerHTML=`<div style="display:grid;gap:18px">
+   <h2>Merci pour votre aide</h2>
+   ${ok?"":`<p class="msg">L'envoi automatique n'a pas abouti. Pour nous transmettre vos réponses, cliquez sur « Envoyer par e-mail » : le message est déjà rempli.</p>`}
+   <p class="hint">Vos réponses nous aident à bâtir un accompagnement simple, humain et adapté à chaque famille.</p>
+   <p class="quote">Natacha &amp; Damien Taudin</p>
+   <div class="nav">${ok?`<a class="btn ghost" href="/">Découvrir nos forfaits</a>`:`<a class="btn primary" href="${mail}">Envoyer par e-mail</a>`}
+   <a class="btn ghost" href="/barometre-aidant">Faire le Baromètre de l'Aidant</a></div></div>`;
+}
+intro();
+</script>
+</body>
+</html>
