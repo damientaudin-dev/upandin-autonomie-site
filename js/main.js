@@ -114,7 +114,7 @@
   const form = $('#form'), msg = $('.form__msg', form);
   function mailtoFallback(d) {
     const body = `Nom : ${d.nom}\nTéléphone : ${d.tel}\nE-mail : ${d.email}\nVous êtes : ${d.profil}\nDemande : ${d.objet}\n\n${d.message}`;
-    location.href = `mailto:damientaudin@icloud.com?cc=natachataudin7@icloud.com&subject=${encodeURIComponent('[Site] ' + d.objet + ' — ' + d.nom)}&body=${encodeURIComponent(body)}`;
+    location.href = `mailto:contact@upandin-autonomie.fr?subject=${encodeURIComponent('[Site] ' + d.objet + ' — ' + d.nom)}&body=${encodeURIComponent(body)}`;
     msg.className = 'form__msg ok';
     msg.textContent = 'Votre messagerie s’ouvre avec votre demande pré-remplie. Vous pouvez aussi nous appeler au 07 64 05 89 45.';
   }
@@ -131,7 +131,7 @@
     const btn = $('button[type=submit]', form);
     btn.disabled = true; btn.textContent = 'Envoi en cours…';
     try {
-      const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
+      const r = await fetch('/contact-envoi.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
       const j = await r.json().catch(() => ({}));
       if (r.ok && j.ok) {
         form.reset();
