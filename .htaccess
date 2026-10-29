@@ -32,7 +32,7 @@ RewriteRule ^(.+?)/?$ $1.html [L]
   ExpiresByType image/png "access plus 30 days"
   ExpiresByType image/webp "access plus 30 days"
   ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType text/css "access plus 1 hour"
   ExpiresByType application/javascript "access plus 1 day"
 </IfModule>
 <IfModule mod_deflate.c>
