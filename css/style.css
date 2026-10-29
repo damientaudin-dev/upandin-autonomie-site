@@ -423,3 +423,11 @@ html:not(.js) .line .stroke{stroke-dashoffset:0}
 .page-cta{display:flex;flex-wrap:wrap;gap:24px 40px;align-items:center;justify-content:space-between}
 .page-cta p{color:#BFC7DC;margin:0}
 .page-cta__btns{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Plaquette (accueil) */
+.plaq__cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem}
+.plaq__dl{font-weight:600;color:inherit;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.plaq__cover{display:block;max-width:300px;margin-inline:auto;box-shadow:0 22px 44px -18px rgba(15,30,60,.55);transform:rotate(-2deg);transition:transform .3s}
+.plaq__cover:hover,.plaq__cover:focus-visible{transform:rotate(0) translateY(-4px)}
+.plaq__cover img{display:block;width:100%;height:auto}
+@media (prefers-reduced-motion:reduce){.plaq__cover{transform:none;transition:none}}
