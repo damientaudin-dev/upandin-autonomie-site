@@ -4,5 +4,6 @@ Allow: /
 Disallow: /sondage-envoi.php
 Disallow: /contact-envoi.php
 Disallow: /404
+Disallow: /tools/
 
 Sitemap: https://www.upandin-autonomie.fr/sitemap.xml

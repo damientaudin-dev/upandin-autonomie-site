@@ -91,6 +91,7 @@
   /* ---- Simulateur crédit d'impôt ---- */
   const eur = v => v.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
   const m = $('#sim-m'), n = $('#sim-n'), no = $('#sim-n-o');
+  if (m && n) {
   function sim() {
     const monthly = Math.max(0, parseFloat(m.value) || 0);
     const months = +n.value;
@@ -109,9 +110,12 @@
   }
   [m, n, ...$$('input[name=sim-a]')].forEach(el => el.addEventListener('input', sim));
   sim();
+  }
 
   /* ---- Formulaire de contact ---- */
-  const form = $('#form'), msg = $('.form__msg', form);
+  const form = $('#form');
+  if (form) {
+  const msg = $('.form__msg', form);
   function mailtoFallback(d) {
     const body = `Nom : ${d.nom}\nTéléphone : ${d.tel}\nE-mail : ${d.email}\nVous êtes : ${d.profil}\nDemande : ${d.objet}\n\n${d.message}`;
     location.href = `mailto:contact@upandin-autonomie.fr?subject=${encodeURIComponent('[Site] ' + d.objet + ' — ' + d.nom)}&body=${encodeURIComponent(body)}`;
@@ -150,5 +154,6 @@
     }
   });
 
-  $('#year').textContent = new Date().getFullYear();
+  }
+  const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
 })();

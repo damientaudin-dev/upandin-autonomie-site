@@ -2,6 +2,7 @@
 Options -Indexes
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+RedirectMatch 404 ^/tools(/.*)?$
 AddDefaultCharset UTF-8
 
 RewriteEngine On
