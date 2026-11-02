@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Votre avis – Up&amp;In Family Office de l'Autonomie</title>
+<meta name="description" content="Vous accompagnez un proche en perte d'autonomie ? Dites-nous ce qui vous pèse le plus au quotidien.">
+<meta property="og:title" content="Qu'est-ce qui vous pèse le plus au quotidien ?">
+<meta property="og:description" content="Aidants : 30 secondes pour nous donner votre avis. Up&In Family Office de l'Autonomie, Bordeaux Métropole.">
+<meta property="og:image" content="https://www.upandin-autonomie.fr/avis/visuel-lien.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:url" content="https://www.upandin-autonomie.fr/avis/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a2147;--navy2:#071a39;--gold:#f0c46e;--gold2:#c9923a;--ink:#fff;--muted:#c9d3e6;--line:rgba(255,255,255,.55)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--navy2)}
+body{background:radial-gradient(ellipse at top,#0e2a57 0%,var(--navy) 40%,var(--navy2) 100%);color:var(--ink);font-family:Inter,system-ui,sans-serif;min-height:100vh;display:flex;justify-content:center;padding:28px 16px 48px}
+.wrap{width:100%;max-width:620px}
+.logo{display:block;width:190px;margin:0 auto 26px}
+h1{font-family:"Libre Caslon Text",Georgia,serif;font-weight:700;text-align:center;font-size:clamp(26px,6vw,40px);line-height:1.15}
+h2{font-family:"Libre Caslon Text",Georgia,serif;font-weight:700;text-align:center;color:var(--gold);font-size:clamp(30px,7.2vw,48px);line-height:1.12;margin:10px 0 8px}
+.hint{text-align:center;color:var(--muted);font-size:15px;margin-bottom:24px}
+.opt{position:relative;display:flex;align-items:center;gap:18px;border:1.5px solid var(--line);border-radius:60px;padding:8px 22px 8px 8px;margin-bottom:14px;cursor:pointer;transition:.2s;user-select:none}
+.opt:hover{border-color:var(--gold)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.num{flex:0 0 74px;height:74px;border-radius:50%;background:linear-gradient(145deg,#f7d78f,var(--gold2));color:var(--navy);font-family:"Libre Caslon Text",serif;font-weight:700;font-size:26px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.lbl{flex:1;font-family:"Libre Caslon Text",serif;font-size:clamp(17px,4.4vw,22px);line-height:1.25}
+.dot{flex:0 0 30px;height:30px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;transition:.2s}
+.opt input:checked ~ .dot{background:var(--gold)}
+.opt input:checked ~ .dot::after{content:"";width:8px;height:14px;border:solid var(--navy);border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.opt:has(input:checked){border-color:var(--gold);background:rgba(240,196,110,.08)}
+.opt input:focus-visible ~ .dot{outline:3px solid #fff;outline-offset:3px}
+.fields{margin-top:26px;display:grid;gap:14px}
+label.f{display:block;font-size:15px;color:var(--muted)}
+label.f span{display:block;margin-bottom:6px}
+input[type=text],input[type=email],input[type=tel],textarea{width:100%;background:rgba(255,255,255,.06);border:1.5px solid var(--line);border-radius:14px;color:#fff;padding:13px 15px;font:inherit;font-size:17px}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{min-height:90px;resize:vertical}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--muted);line-height:1.45;cursor:pointer}
+.check input{margin-top:3px;width:20px;height:20px;accent-color:var(--gold);flex:0 0 20px}
+.hp{position:absolute;left:-9999px}
+button{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;max-width:420px;margin:28px auto 0;border:0;border-radius:60px;padding:20px;background:linear-gradient(145deg,#f7d78f,var(--gold2));color:var(--navy);font-family:"Libre Caslon Text",serif;font-weight:700;font-size:24px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+button:disabled{opacity:.6;cursor:wait}
+.err{color:#ffb4a8;text-align:center;margin-top:14px;min-height:1.2em}
+.merci{display:none;text-align:center;padding-top:10px}
+.merci p{color:var(--muted);font-size:17px;line-height:1.6;margin:14px 0}
+.merci a{color:var(--gold)}
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:34px;line-height:1.6}
+footer a{color:var(--gold);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img class="logo" src="logo.png" alt="Up&In – Family Office de l'Autonomie">
+
+  <form id="f" novalidate>
+    <h1>Vous accompagnez un proche en perte d’autonomie.</h1>
+    <h2>Qu’est-ce qui vous pèse le plus au quotidien ?</h2>
+    <p class="hint">Une ou plusieurs réponses possibles</p>
+
+    <label class="opt"><span class="num">01</span><span class="lbl">Les démarches administratives</span><input type="checkbox" name="choix[]" value="1"><span class="dot"></span></label>
+    <label class="opt"><span class="num">02</span><span class="lbl">La coordination des professionnels</span><input type="checkbox" name="choix[]" value="2"><span class="dot"></span></label>
+    <label class="opt"><span class="num">03</span><span class="lbl">L’organisation des rendez-vous</span><input type="checkbox" name="choix[]" value="3"><span class="dot"></span></label>
+    <label class="opt"><span class="num">04</span><span class="lbl">Le suivi global de la situation</span><input type="checkbox" name="choix[]" value="4"><span class="dot"></span></label>
+
+    <div class="fields">
+      <label class="f"><span>Autre chose ? Racontez-nous (facultatif)</span><textarea name="commentaire" maxlength="2000"></textarea></label>
+      <label class="f"><span>Prénom</span><input type="text" name="prenom" maxlength="80" autocomplete="given-name"></label>
+      <label class="f"><span>E-mail * (pour recevoir notre remerciement)</span><input type="email" name="email" maxlength="160" required autocomplete="email"></label>
+      <label class="f"><span>Téléphone (facultatif)</span><input type="tel" name="telephone" maxlength="30" autocomplete="tel"></label>
+      <label class="check"><input type="checkbox" name="rappel" value="1"> Je souhaite être recontacté(e) pour échanger sur ma situation.</label>
+      <label class="check"><input type="checkbox" name="rgpd" value="1" required> J’accepte que mes réponses soient utilisées par Up&amp;In Family Office de l’Autonomie pour améliorer ses services et me répondre. Elles ne sont jamais cédées à des tiers. Je peux demander leur suppression à tout moment à contact@upandin-autonomie.fr.</label>
+      <input class="hp" type="text" name="site_web" tabindex="-1" autocomplete="off" aria-hidden="true">
+    </div>
+
+    <button type="submit" id="go">Donnez votre avis <span aria-hidden="true">→</span></button>
+    <p class="err" id="err" role="alert"></p>
+  </form>
+
+  <div class="merci" id="merci">
+    <h2>Merci !</h2>
+    <p>Votre avis compte beaucoup pour nous. Un e-mail de confirmation vient de vous être envoyé.</p>
+    <p>Découvrez comment nous accompagnons les familles :<br><a href="https://www.upandin-autonomie.fr">www.upandin-autonomie.fr</a></p>
+  </div>
+
+  <footer>
+    Up&amp;In Family Office de l’Autonomie · Bordeaux Métropole<br>
+    <a href="mailto:contact@upandin-autonomie.fr">contact@upandin-autonomie.fr</a> · <a href="https://www.upandin-autonomie.fr">upandin-autonomie.fr</a>
+  </footer>
+</div>
+<script>
+const f=document.getElementById('f'),err=document.getElementById('err'),go=document.getElementById('go');
+f.addEventListener('submit',async e=>{
+  e.preventDefault();err.textContent='';
+  const d=new FormData(f);
+  if(!d.getAll('choix[]').length && !d.get('commentaire').trim()){err.textContent='Cochez au moins une réponse ou laissez un commentaire.';return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.get('email'))){err.textContent='Merci d’indiquer une adresse e-mail valide.';return}
+  if(!d.get('rgpd')){err.textContent='Merci d’accepter l’utilisation de vos réponses.';return}
+  go.disabled=true;
+  try{
+    const r=await fetch('envoyer.php',{method:'POST',body:d});
+    const j=await r.json();
+    if(!j.ok) throw new Error(j.message||'Erreur');
+    f.style.display='none';document.getElementById('merci').style.display='block';window.scrollTo({top:0,behavior:'smooth'});
+  }catch(x){err.textContent=x.message&&x.message!=='Erreur'?x.message:'Envoi impossible pour le moment. Réessayez ou écrivez-nous à contact@upandin-autonomie.fr.';go.disabled=false}
+});
+</script>
+</body>
+</html>
