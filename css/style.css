@@ -438,7 +438,13 @@ html:not(.js) .line .stroke{stroke-dashoffset:0}
 /* Esperluette droite dans le mot-symbole (charte Up&In) */
 .brand__txt i{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-weight:600}
 /* Accès au portail Up&In (cabinet-upandin-project.com) */
-.portail{display:inline-flex;align-items:center;gap:6px;color:#E9ECF5;text-decoration:none;font-weight:600;font-size:.85rem;padding:.5em .85em;min-height:40px;border:1px solid rgba(201,162,78,.55);border-radius:99px;white-space:nowrap}
-.portail:hover,.portail:focus-visible{color:var(--gold-2);border-color:var(--gold)}
-@media (max-width:1560px){.portail span{display:none}.portail{padding:.5em .6em}}
+.portail{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:var(--navy);text-decoration:none;font-weight:700;font-size:.85rem;padding:.5em 1em;min-height:40px;border:1px solid var(--gold);border-radius:99px;white-space:nowrap;box-shadow:0 0 0 3px rgba(201,162,78,.22)}
+.portail:hover,.portail:focus-visible{background:var(--gold-2);border-color:var(--gold-2);color:var(--navy)}
+@media (min-width:1181px) and (max-width:1560px){.portail span{display:none}.portail{padding:.5em .65em}}
+@media (max-width:420px){.portail span{display:none}.portail{padding:.5em .65em}}
+/* Bandeau portail en tête de l'accueil */
+.hero__portail{display:inline-flex;align-items:center;gap:10px;margin-bottom:1.4em;padding:.6em 1.1em;border:1px solid rgba(201,162,78,.7);border-radius:99px;background:rgba(201,162,78,.12);color:#E9ECF5;text-decoration:none;font-size:.92rem;line-height:1.35;transition:background .2s,border-color .2s}
+.hero__portail b{color:var(--gold-2);font-weight:700}
+.hero__portail svg{flex:none;color:var(--gold-2)}
+.hero__portail:hover,.hero__portail:focus-visible{background:rgba(201,162,78,.24);border-color:var(--gold-2);color:#fff}
 @media (min-width:1181px) and (max-width:1360px){.nav{gap:0}.nav a{padding:.55em .45em;font-size:.84rem}.brand__txt small{letter-spacing:.12em}}

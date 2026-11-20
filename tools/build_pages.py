@@ -130,7 +130,7 @@ def page(slug, title, desc, h1, eyebrow, lead, body, faq, service_name, crumb):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=20261120">
+<link rel="stylesheet" href="/css/style.css?v=20261121">
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
 </script>
