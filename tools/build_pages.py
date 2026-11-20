@@ -7,13 +7,13 @@ B = "https://www.upandin-autonomie.fr"
 ORG = {"@id": B + "/#entreprise"}
 
 NAV = """    <nav class="nav" id="nav" aria-label="Navigation principale">
-      <a href="/accompagnement-seniors-domicile">Seniors</a>
-      <a href="/aide-aux-aidants">Aidants</a>
-      <a href="/retour-domicile-apres-hospitalisation">Après l'hôpital</a>
-      <a href="/zone-intervention">Zone</a>
-      <a href="/#forfaits">Forfaits</a>
-      <a href="/barometre-aidant">Baromètre</a>
-      <a href="/#contact" class="btn btn--gold btn--sm">Contact</a>
+      <a href="/">Accueil</a>
+      <a href="/notre-approche">Notre approche</a>
+      <a href="/forfaits">Forfaits</a>
+      <a href="/equipe">L'équipe</a>
+      <a href="/questions">Questions</a>
+      <a href="/documentation" aria-current="page">Documentation</a>
+      <a href="/contact" class="btn btn--gold btn--sm">Contact</a>
     </nav>"""
 
 HEADER = """<a class="skip" href="#contenu">Aller au contenu</a>
@@ -25,6 +25,7 @@ HEADER = """<a class="skip" href="#contenu">Aller au contenu</a>
     </a>
 """ + NAV + """
     <div class="topbar__tools">
+      <a class="portail" href="https://www.cabinet-upandin-project.com/" title="Revenir au portail Up&amp;In" aria-label="Portail Up&amp;In"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M3 21h18M14 12h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Portail Up&amp;In</span></a>
       <div class="a11y" role="group" aria-label="Taille du texte et contraste">
         <button type="button" data-size="0" aria-pressed="true" title="Texte normal">A</button>
         <button type="button" data-size="1" aria-pressed="false" title="Texte grand">A<sup>+</sup></button>
@@ -47,7 +48,7 @@ FOOTER = """<footer class="footer">
     </div>
     <div>
       <h4>Nos accompagnements</h4>
-      <a href="/accompagnement-seniors-domicile">Seniors à domicile et en résidence</a><a href="/aide-aux-aidants">Aide aux aidants</a><a href="/retour-domicile-apres-hospitalisation">Retour à domicile après l'hôpital</a><a href="/zone-intervention">Zone d'intervention</a><a href="/#forfaits">Forfaits</a><a href="/barometre-aidant">Baromètre de l'Aidant</a>
+      <a href="/accompagnement-seniors-domicile">Seniors à domicile et en résidence</a><a href="/aide-aux-aidants">Aide aux aidants</a><a href="/retour-domicile-apres-hospitalisation">Retour à domicile après l'hôpital</a><a href="/zone-intervention">Zone d'intervention</a><a href="/notre-approche">Notre approche</a><a href="/forfaits">Forfaits</a><a href="/equipe">L'équipe</a><a href="/questions">Questions</a><a href="/documentation">Documentation</a><a href="/barometre-aidant">Baromètre de l'Aidant</a><a href="/contact">Contact</a>
     </div>
     <div>
       <h4>Contact</h4>
@@ -56,7 +57,7 @@ FOOTER = """<footer class="footer">
     </div>
     <div>
       <h4>Informations</h4>
-      <a href="/mentions-legales">Mentions légales</a><a href="/mentions-legales#confidentialite">Confidentialité</a><a href="/plaquette">Plaquette de présentation</a><a href="/sondage">Sondage</a>
+      <a href="/mentions-legales">Mentions légales</a><a href="/mentions-legales#confidentialite">Confidentialité</a><a href="/plaquette">Plaquette de présentation</a><a href="/sondage">Sondage</a><a href="https://www.cabinet-upandin-project.com/">Portail Up&amp;In</a><a href="https://www.cabinet-upandin-project.com/conseils">Up&amp;In Conseils</a>
       <p class="ns">Structure non soignante. En cas d'urgence : 15 ou 112.</p>
     </div>
   </div>
@@ -80,7 +81,7 @@ CTA = """<section class="section section--navy">
     </div>
     <div class="page-cta__btns">
       <a href="tel:+33764058945" class="btn btn--gold">07 64 05 89 45</a>
-      <a href="/#contact" class="btn btn--ghost">Demander un rappel</a>
+      <a href="/contact" class="btn btn--ghost">Demander un rappel</a>
     </div>
   </div>
 </section>"""
@@ -129,7 +130,7 @@ def page(slug, title, desc, h1, eyebrow, lead, body, faq, service_name, crumb):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=20261029b">
+<link rel="stylesheet" href="/css/style.css?v=20261120">
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
 </script>
@@ -139,11 +140,11 @@ def page(slug, title, desc, h1, eyebrow, lead, body, faq, service_name, crumb):
 <main id="contenu">
 <section class="page-hero">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> <span aria-hidden="true">›</span> <span>{crumb}</span></nav>
+    <nav class="crumbs" aria-label="Fil d'Ariane"><a href="/">Accueil</a> <span aria-hidden="true">›</span> <a href="/documentation">Documentation</a> <span aria-hidden="true">›</span> <span>{crumb}</span></nav>
     <p class="eyebrow">{eyebrow}</p>
     <h1>{h1}</h1>
     <p class="lead">{lead}</p>
-    <div class="hero__cta"><a href="/#contact" class="btn btn--gold">Demander un premier échange</a><a href="tel:+33764058945" class="btn btn--ghost">07 64 05 89 45</a></div>
+    <div class="hero__cta"><a href="/contact" class="btn btn--gold">Demander un premier échange</a><a href="tel:+33764058945" class="btn btn--ghost">07 64 05 89 45</a></div>
   </div>
 </section>
 {body}
@@ -191,7 +192,7 @@ PAGES.append(dict(
         "<li><b>03</b><h3>Plan et devis</h3><p>Des priorités claires et un forfait adapté. Rien n'est engagé sans votre accord.</p></li>"
         "<li><b>04</b><h3>Suivi dans la durée</h3><p>Visites, coordination, comptes rendus et ajustements au fil du temps.</p></li>"
         "</ol>",
-        '<p>Trois forfaits mensuels existent selon le niveau d\'accompagnement souhaité : <a href="/#forfaits">Repères, Relais et Sérénité</a>.</p>',
+        '<p>Trois forfaits mensuels existent selon le niveau d\'accompagnement souhaité : <a href="/forfaits">Repères, Relais et Sérénité</a>.</p>',
         '<div class="note-ns"><b>Nous ne sommes pas soignants.</b> Nous ne réalisons aucun acte de soin et ne donnons aucun avis médical. Nous travaillons en complémentarité des équipes de soin.</div>',
     ),
     faq=[
